@@ -23,6 +23,10 @@ function App() {
   const [startIndex, setStartIndex] = useState(1);
   const [totalBooks, setTotalBooks] = useState(0);
 
+  const clickedOn = () => {
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }
+
   // Handle Search
   const handleSubmit = () => {
     setLoading(true);
@@ -54,6 +58,7 @@ function App() {
             )
             .then(response => {
                 setCards([...cards, ...response.data.items]);
+
                 setLoading(false);
             })
             .catch(error => {
@@ -142,13 +147,14 @@ function App() {
         return (
           <div className='col-lg-4 mb-3' key={item.id}>
             <BookCard
-              thumbnail={thumbnail}
-              title={item.volumeInfo.title}
-              categories={item.volumeInfo.categories}
-              authors={item.volumeInfo.authors}
-              description={item.volumeInfo.description}
-              previewLink={item.volumeInfo.previewLink}
-              infoLink={item.volumeInfo.infoLink}
+                bookIndex={i+1}
+                thumbnail={thumbnail}
+                title={item.volumeInfo.title}
+                categories={item.volumeInfo.categories}
+                authors={item.volumeInfo.authors}
+                description={item.volumeInfo.description}
+                previewLink={item.volumeInfo.previewLink}
+                infoLink={item.volumeInfo.infoLink}
             />
           </div>
         );
@@ -163,13 +169,18 @@ function App() {
   return (
     <div className='w-100 h-100'>
       {mainHeader()}
-        <div className="d-flex justify-content-center align-items-center mt-3">
-            Found {totalBooks} results
+        <div>
+            <div className="d-flex justify-content-center align-items-center mt-3">
+                <p>Found <strong> {totalBooks} </strong> results</p>
+            </div>
+            <div className="d-flex justify-content-center align-items-center mt-3">
+                <p>You have <strong> {cards.length} </strong> of them on your page</p>
+            </div>
         </div>
       {handleCards()}
         <div className="d-flex justify-content-center align-items-center mb-3">
-            {cards.length !== 0
-                ? <div>
+            {cards.length !== 0 && !loading
+                ? <div onClick={clickedOn}>
                     <Button
                         onClick={handleSubmitMore}
                     >

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Card, CardTitle, CardImg, CardBody, Button, Modal } from 'reactstrap';
 const BookCard = ({
+  bookIndex,
   thumbnail,
   title,
   categories,
@@ -12,6 +13,8 @@ const BookCard = ({
   // States
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+
+  const titleArr = [...title]
 
   let authorsNames
   if(authors === undefined) {
@@ -34,7 +37,7 @@ const BookCard = ({
         <CardTitle className='card-title'>
           <div>
             <p style={{color: 'gray', textDecoration: 'underline'}}>{categories}</p>
-            {title}
+            <strong style={{textDecoration: 'underline'}}>{bookIndex}.</strong> {titleArr.length > 24 ? titleArr.slice(0, 24) : titleArr}...
             <p style={{color: 'gray'}}>{
               authorsNames.length > 1
                   ? authorsNames.slice(0, 28) + '...'
