@@ -4,7 +4,7 @@ const BookModalBody = ({thumbnail, title, authorsNames, categories, description}
     return (
         <div className='modal-body'>
             <div className='d-flex justify-content-between ml-3'>
-                <img src={thumbnail} alt={title} style={{ height: '233px' }} />
+                <img src={thumbnail} alt={title} className='book-modal-body-img' />
                 <div>
                     {authorsNames
                         ? <p><strong>Authors:</strong> {authorsNames}</p>
@@ -24,7 +24,7 @@ const BookModalBody = ({thumbnail, title, authorsNames, categories, description}
                 : ''
             }
         </div>
-    );
-};
+    )
+}
 
-export default BookModalBody;
+export default BookModalBody

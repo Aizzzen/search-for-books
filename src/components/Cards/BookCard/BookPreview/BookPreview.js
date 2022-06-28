@@ -17,7 +17,7 @@ const BookPreview = ({thumbnail, title, categories, bookIndex, titleArr, authors
                 toggle={toggle}
             />
         </>
-    );
-};
+    )
+}
 
-export default BookPreview;
+export default BookPreview

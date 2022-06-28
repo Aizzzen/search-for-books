@@ -5,11 +5,11 @@ const BookImage = ({thumbnail, title}) => {
     return (
         <CardImg
             top
-            style={{ width: '100%', height: '300px', padding: '30px', paddingBottom: '5px'}}
+            className='book-image-card-img'
             src={thumbnail}
             alt={title}
         />
-    );
-};
+    )
+}
 
-export default BookImage;
+export default BookImage

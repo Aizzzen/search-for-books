@@ -8,7 +8,6 @@ import Cards from "./components/Cards/Cards";
 import Footer from "./components/Footer/Footer";
 
 function App() {
-  // States
   const [category, setCategory] = useState({value: 'all'});
   const [sortingBy, setSortingBy] = useState({value: 'relevance'});
   const [query, setQuery] = useState('');
@@ -21,7 +20,6 @@ function App() {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
-  // Handle Search
   const handleSubmit = () => {
     setLoading(true);
       axios
@@ -42,7 +40,6 @@ function App() {
         });
   }
 
-  // Load more
     const handleSubmitMore = () => {
         setLoading(true);
         setStartIndex(startIndex + 30)

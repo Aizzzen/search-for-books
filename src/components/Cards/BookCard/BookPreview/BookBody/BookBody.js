@@ -6,13 +6,13 @@ const BookBody = ({categories, bookIndex, titleArr, authorsNames, toggle}) => {
         <CardBody>
             <CardTitle className='card-title'>
                 <div>
-                    <p style={{color: 'gray', textDecoration: 'underline'}}>
+                    <p className='book-body-first-p'>
                         {categories}
                     </p>
-                    <strong style={{textDecoration: 'underline'}}>
+                    <strong className='book-body-index'>
                         {bookIndex}.
                     </strong> {titleArr.length > 24 ? titleArr.slice(0, 24) : titleArr}...
-                    <p style={{color: 'gray'}}>
+                    <p className='book-body-second-p'>
                         {authorsNames.length > 1
                             ? authorsNames.slice(0, 28) + '...'
                             : authorsNames
@@ -22,7 +22,7 @@ const BookBody = ({categories, bookIndex, titleArr, authorsNames, toggle}) => {
             </CardTitle>
             <Button onClick={toggle}>Click for info</Button>
         </CardBody>
-    );
-};
+    )
+}
 
-export default BookBody;
+export default BookBody

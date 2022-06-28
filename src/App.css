@@ -55,3 +55,47 @@ body {
   outline-offset: none;
   font-size: 16px;
 }
+
+.input-container {
+  width: 60%;
+  z-index: 2;
+  color: white;
+}
+
+.book-modal-body-img {
+  height: 233px;
+}
+
+.footer-button-a {
+  text-decoration: none;
+  color: white;
+}
+
+.book-body-first-p {
+  color: gray;
+  text-decoration: underline;
+}
+
+.book-body-index {
+  text-decoration: underline;
+}
+
+.book-body-second-p {
+  color: gray;
+}
+
+.book-image-card-img {
+  width: 100%;
+  height: 300px;
+  padding: 30px;
+  padding-bottom: 5px;
+}
+
+.book-card-card {
+  width: 280px;
+  height: 500px;
+}
+
+.header-z-z {
+  z-index: 2;
+}

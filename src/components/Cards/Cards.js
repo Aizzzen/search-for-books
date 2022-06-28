@@ -9,7 +9,7 @@ const Cards = ({loading, cards, totalBooks}) => {
                 <div className='d-flex justify-content-center mt-3'>
                     <Spinner style={{ width: '3rem', height: '3rem' }} />
                 </div>
-            );
+            )
         } else {
             const items = cards.map((item, i) => {
                 let thumbnail = '';
@@ -18,10 +18,7 @@ const Cards = ({loading, cards, totalBooks}) => {
                 } else {
                     thumbnail = 'https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg'
                 }
-                console.log(cards)
-
                 return (
-
                     <div className='col-lg-4 mb-3' key={item.id}>
                         <BookCard
                             bookIndex={i+1}
@@ -34,8 +31,8 @@ const Cards = ({loading, cards, totalBooks}) => {
                             infoLink={item.volumeInfo.infoLink}
                         />
                     </div>
-                );
-            });
+                )
+            })
             return (
                 <>
                     <TotalItems totalBooks={totalBooks} cards={cards} />
@@ -43,8 +40,8 @@ const Cards = ({loading, cards, totalBooks}) => {
                         <div className='row'>{items}</div>
                     </div>
                 </>
-            );
+            )
         }
-};
+}
 
-export default Cards;
+export default Cards

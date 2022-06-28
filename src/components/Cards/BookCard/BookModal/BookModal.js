@@ -28,7 +28,7 @@ const BookModal = ({modal, toggle, title, thumbnail, authorsNames, categories, d
                 />
             </Modal>
         </>
-    );
-};
+    )
+}
 
-export default BookModal;
+export default BookModal

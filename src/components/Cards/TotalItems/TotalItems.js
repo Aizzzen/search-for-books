@@ -19,7 +19,7 @@ const TotalItems = ({totalBooks, cards}) => {
                 }
             />
         </div>
-    );
-};
+    )
+}
 
-export default TotalItems;
+export default TotalItems

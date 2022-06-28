@@ -6,17 +6,16 @@ const FooterButton = ({link, title}) => {
         <Button>
             <a
                 href={link}
-                className='btn-link'
+                className='footer-button-a btn-link'
                 color='default'
                 type='button'
                 target='_blank'
                 rel='noopener noreferrer'
-                style={{textDecoration: 'none', color: 'white'}}
             >
                 {title}
             </a>
         </Button>
-    );
-};
+    )
+}
 
-export default FooterButton;
+export default FooterButton

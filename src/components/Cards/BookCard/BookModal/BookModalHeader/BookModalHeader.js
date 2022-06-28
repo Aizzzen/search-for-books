@@ -15,7 +15,7 @@ const BookModalHeader = ({title, toggle}) => {
                 <span aria-hidden={true}>X</span>
             </button>
         </div>
-    );
-};
+    )
+}
 
-export default BookModalHeader;
+export default BookModalHeader

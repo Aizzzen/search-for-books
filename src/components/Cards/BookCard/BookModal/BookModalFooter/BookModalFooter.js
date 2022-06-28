@@ -18,7 +18,7 @@ const BookModalFooter = ({previewLink, infoLink}) => {
                 />
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default BookModalFooter;
+export default BookModalFooter

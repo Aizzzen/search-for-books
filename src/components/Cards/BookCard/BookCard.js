@@ -4,7 +4,6 @@ import BookPreview from "./BookPreview/BookPreview";
 import BookModal from "./BookModal/BookModal";
 
 const BookCard = ({bookIndex, thumbnail, title, categories, authors, description, previewLink, infoLink}) => {
-  // States
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
@@ -20,11 +19,11 @@ const BookCard = ({bookIndex, thumbnail, title, categories, authors, description
   }
 
   return (
-    <Card style={{ width: '280px', height: '500px' }} className='m-auto '>
+    <Card className='book-card-card m-auto '>
       <BookPreview thumbnail={thumbnail} title={title} categories={categories} bookIndex={bookIndex} titleArr={titleArr} authorsNames={authorsNames} toggle={toggle} />
       <BookModal modal={modal} toggle={toggle} title={title} thumbnail={thumbnail} authorsNames={authorsNames} categories={categories} description={description} previewLink={previewLink} infoLink={infoLink} />
     </Card>
-  );
-};
+  )
+}
 
-export default BookCard;
+export default BookCard

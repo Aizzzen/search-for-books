@@ -5,7 +5,7 @@ const TotalSchema = ({info}) => {
         <div className="d-flex justify-content-center align-items-center mt-3">
             {info}
         </div>
-    );
-};
+    )
+}
 
-export default TotalSchema;
+export default TotalSchema
