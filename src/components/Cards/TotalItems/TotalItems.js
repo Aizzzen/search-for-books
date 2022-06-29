@@ -1,7 +1,11 @@
 import React from 'react';
 import TotalSchema from "./TotalSchema/TotalSchema";
+import {useSelector} from "react-redux";
 
-const TotalItems = ({totalBooks, cards}) => {
+const TotalItems = () => {
+    const cards = useSelector(state => state.cards.cards)
+    const totalBooks = useSelector(state => state.cards.totalBooks)
+
     return (
         <div>
             <TotalSchema

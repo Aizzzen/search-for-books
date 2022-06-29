@@ -2,9 +2,13 @@ import React from 'react';
 import {Spinner} from "reactstrap";
 import BookCard from "./BookCard/BookCard";
 import TotalItems from "./TotalItems/TotalItems";
+import {useSelector} from "react-redux";
 
-const Cards = ({loading, cards, totalBooks}) => {
-        if (loading) {
+const Cards = () => {
+    const cards = useSelector(state => state.cards.cards)
+    const loading = useSelector(state => state.cards.loading)
+
+    if (loading) {
             return (
                 <div className='d-flex justify-content-center mt-3'>
                     <Spinner style={{ width: '3rem', height: '3rem' }} />
@@ -35,7 +39,7 @@ const Cards = ({loading, cards, totalBooks}) => {
             })
             return (
                 <>
-                    <TotalItems totalBooks={totalBooks} cards={cards} />
+                    <TotalItems/>
                     <div className='container my-5'>
                         <div className='row'>{items}</div>
                     </div>

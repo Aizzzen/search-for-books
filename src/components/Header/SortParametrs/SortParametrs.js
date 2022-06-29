@@ -1,11 +1,14 @@
 import React from 'react';
+import {useDispatch} from "react-redux";
 
 const SortParametrs = ({title, setFunc, dataArr}) => {
+    const dispatch = useDispatch()
+
     return (
         <span>
             {title}:
             <select
-                onChange={e => setFunc({value: e.target.value})}
+                onChange={e => dispatch(setFunc({value: e.target.value}))}
             >
                 {dataArr.map(parametr =>
                         <option

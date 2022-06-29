@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -6,66 +6,68 @@ import axios from 'axios';
 import Header from "./components/Header/Header";
 import Cards from "./components/Cards/Cards";
 import Footer from "./components/Footer/Footer";
+import {useDispatch, useSelector} from "react-redux";
+import {changeIndex, changeStatus, handleCards, totalValue} from "./redux/slices/cardSlice";
 
 function App() {
-  const [category, setCategory] = useState({value: 'all'});
-  const [sortingBy, setSortingBy] = useState({value: 'relevance'});
-  const [query, setQuery] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [cards, setCards] = useState([]);
-  const [startIndex, setStartIndex] = useState(1);
-  const [totalBooks, setTotalBooks] = useState(0);
+    const cards = useSelector(state => state.cards.cards)
+    const startIndex = useSelector(state => state.cards.startIndex)
 
-  const clickedOn = () => {
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
-  }
+    const category = useSelector(state => state.input.category)
+    const sortingBy = useSelector(state => state.input.sortingBy)
+    const query = useSelector(state => state.input.query)
 
-  const handleSubmit = () => {
-    setLoading(true);
-      axios
-        .get(
-          `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&orderBy=${sortingBy.value}&subject=${category.value}&maxResults=30`
-        )
-        .then(response => {
-            if (response.data.items.length === 0 || null) {
-              toast.error('Nothing was found for your query')
-            }
-            setCards(response.data.items);
-            setTotalBooks(response.data.totalItems);
-            setLoading(false);
-        })
-        .catch(error => {
-          setLoading(true);
-          toast.error(error.message);
-        });
-  }
+    const dispatch = useDispatch()
+
+    const clickedOn = () => {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+    }
+
+    const handleSubmit = () => {
+        dispatch(changeStatus(true))
+        axios
+            .get(
+              `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&orderBy=${sortingBy.value}&subject=${category.value}&maxResults=30`
+            )
+            .then(response => {
+                if (response.data.items.length === 0 || null) {
+                  toast.error('Nothing was found for your query')
+                }
+                dispatch(handleCards(response.data.items))
+                dispatch(totalValue(response.data.totalItems))
+                dispatch(changeStatus(false))
+            })
+            .catch(error => {
+                dispatch(changeStatus(true))
+              toast.error(error.message);
+            });
+    }
 
     const handleSubmitMore = () => {
-        setLoading(true);
-        setStartIndex(startIndex + 30)
+        dispatch(changeStatus(true))
+        dispatch(changeIndex(startIndex + 30))
         axios
             .get(
                 `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&orderBy=${sortingBy.value}&subject=${category.value}&maxResults=30`
             )
             .then(response => {
-                setCards([...cards, ...response.data.items]);
-
-                setLoading(false);
+                dispatch(handleCards([...cards, ...response.data.items]))
+                dispatch(changeStatus(false))
             })
             .catch(error => {
-                setLoading(true);
+                dispatch(changeStatus(true))
                 toast.error(error.message);
             });
     }
 
-  return (
-    <div className='w-100 h-100'>
-      <Header query={query} setQuery={setQuery} handleSubmit={handleSubmit} setCategory={setCategory} setSortingBy={setSortingBy} />
-      <Cards loading={loading} cards={cards} totalBooks={totalBooks} />
-      <Footer cards={cards} loading={loading} clickedOn={clickedOn} handleSubmitMore={handleSubmitMore} />
-      <ToastContainer />
-    </div>
-  );
-}
+    return (
+        <div className='w-100 h-100'>
+          <Header handleSubmit={handleSubmit} />
+          <Cards/>
+          <Footer clickedOn={clickedOn} handleSubmitMore={handleSubmitMore} />
+          <ToastContainer />
+        </div>
+      );
+    }
 
 export default App;

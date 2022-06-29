@@ -2,8 +2,9 @@ import React from 'react';
 import {categories, sortParams} from "../../data";
 import SortParametrs from "./SortParametrs/SortParametrs";
 import InputComponent from "./InputComponent/InputComponent";
+import {changeCategory, changeSorting} from "../../redux/slices/inputSlice";
 
-const Header = ({query, setQuery, handleSubmit, setCategory, setSortingBy}) => {
+const Header = ({handleSubmit}) => {
         return (
             <div className='main-image d-flex justify-content-center align-items-center flex-column'>
                 <div className='filter'></div>
@@ -13,10 +14,10 @@ const Header = ({query, setQuery, handleSubmit, setCategory, setSortingBy}) => {
                     Search for books
                 </h1>
                 <div className='input-container'>
-                    <InputComponent query={query} setQuery={setQuery} handleSubmit={handleSubmit} />
+                    <InputComponent handleSubmit={handleSubmit} />
                     <div className='select-field'>
-                        <SortParametrs title={'Categories'} setFunc={setCategory} dataArr={categories} />
-                        <SortParametrs title={'Sorting by'} setFunc={setSortingBy} dataArr={sortParams} />
+                        <SortParametrs title={'Categories'} setFunc={changeCategory} dataArr={categories} />
+                        <SortParametrs title={'Sorting by'} setFunc={changeSorting} dataArr={sortParams} />
                     </div>
                 </div>
             </div>
