@@ -20,10 +20,16 @@ export const cardSlice = createSlice({
         },
         changeIndex(state, action) {
             state.startIndex = action.payload
+        },
+        cleanCards(state) {
+            state.cards = []
+        },
+        cleanTotal(state) {
+            state.totalBooks = 0
         }
     }
 })
 
-export const {handleCards, totalValue, changeStatus, changeIndex} = cardSlice.actions
+export const {handleCards, totalValue, changeStatus, changeIndex, cleanCards, cleanTotal} = cardSlice.actions
 
 export default cardSlice.reducer

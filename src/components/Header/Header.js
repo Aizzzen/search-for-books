@@ -16,8 +16,8 @@ const Header = ({handleSubmit}) => {
                 <div className='input-container'>
                     <InputComponent handleSubmit={handleSubmit} />
                     <div className='select-field'>
-                        <SortParametrs title={'Categories'} setFunc={changeCategory} dataArr={categories} />
-                        <SortParametrs title={'Sorting by'} setFunc={changeSorting} dataArr={sortParams} />
+                        <SortParametrs title={'Categories'} setFunc={changeCategory} dataArr={categories} values={'categories'} />
+                        <SortParametrs title={'Sorting by'} setFunc={changeSorting} dataArr={sortParams} values={'sortingBy'} />
                     </div>
                 </div>
             </div>

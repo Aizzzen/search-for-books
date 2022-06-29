@@ -1,8 +1,8 @@
 import React from 'react';
-import {Spinner} from "reactstrap";
 import BookCard from "./BookCard/BookCard";
 import TotalItems from "./TotalItems/TotalItems";
 import {useSelector} from "react-redux";
+import Spin from "./Spin";
 
 const Cards = () => {
     const cards = useSelector(state => state.cards.cards)
@@ -10,9 +10,7 @@ const Cards = () => {
 
     if (loading) {
             return (
-                <div className='d-flex justify-content-center mt-3'>
-                    <Spinner style={{ width: '3rem', height: '3rem' }} />
-                </div>
+                <Spin/>
             )
         } else {
             const items = cards.map((item, i) => {
