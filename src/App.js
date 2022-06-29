@@ -25,7 +25,7 @@ function App() {
         }
         axios
             .get(
-              `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&orderBy=${sortingBy.value}&subject=${category.value}&maxResults=30`
+              `https://www.googleapis.com/books/v1/volumes?q=${query}&startIndex=${startIndex}&orderBy=${sortingBy.value}&subject=${category.value}&maxResults=30&key=AIzaSyCdAVMsVpnSaPF8_cOgCpbWcGuapVpbfaY`
             )
             .then(response => {
                 if (response.data.items.length === 0 || null) {

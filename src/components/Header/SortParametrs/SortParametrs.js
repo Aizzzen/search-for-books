@@ -30,7 +30,7 @@ const SortParametrs = ({title, setFunc, dataArr, values}) => {
                 onChange={handleChange}
             >
                 {dataArr.map(parametr =>
-                        <option
+                        <option key={parametr}
                             value={parametr}
                         >
                             {parametr}

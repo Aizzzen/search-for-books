@@ -21,7 +21,7 @@ const Cards = () => {
                     thumbnail = 'https://st3.depositphotos.com/1322515/35964/v/600/depositphotos_359648638-stock-illustration-image-available-icon.jpg'
                 }
                 return (
-                    <div className='col-lg-4 mb-3' key={item.id}>
+                    <div className='col-lg-4 mb-3' key={i+1}>
                         <BookCard
                             bookIndex={i+1}
                             thumbnail={thumbnail}
