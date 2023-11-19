@@ -47,6 +47,14 @@ body {
   font-size: 25px;
 }
 
+@media screen and (max-width: 450px){
+  .select-field {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .select-field select {
   border-radius: 10px;
   border: none;

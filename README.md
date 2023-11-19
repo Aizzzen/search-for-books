@@ -1,31 +1,22 @@
 # Тестовое задание на позицию Frontend developer в компанию Future Group, город Москва
-## Реализация доступна по ссылке: https://search-books-aaa.netlify.app/
+### Приложение для поиска книг, с сортировкой
+### Реализация доступна по ссылке: <a href="https://search-for-books-futuregroup.netlify.app/">Search for books</a>
 
-
-## Приложение для поиска книг
-
-
+### Для установки всех зависимостей и запуска проекта:
 ```
 npm install
 ```
-&
 ```
 npm start
 ```
 
 Стек:
-
-
--React
-
-
--Redux Toolkit
-
-
--Axios
-
-
--Reactstrap
+- React
+- Redux Toolkit
+- Axios
+- Reactstrap
+- react-toastify
+- dotenv
 
 
 
